@@ -23,9 +23,10 @@ function download_and_install_groovy {
 		chmod -R +x groovy-2.3.6
 		mv groovy-2.3.6 ${CACHE_DIR}
 	fi
-	cp -R ${CACHE_DIR}/groovy-2.3.6 ${BUILD_DIR}/.buildpacks/groovy-2.3.6
+	mkdir ${BUILD_DIR}/.buildpack
+	cp -R ${CACHE_DIR}/groovy-2.3.6 ${BUILD_DIR}/.buildpack/groovy-2.3.6
 	echo "java.runtime.version=1.8" > ${BUILD_DIR}/system.properties
-	echo "export PATH=/app/.buildpacks/groovy-2.3.6/bin:/app/.jdk/bin:$PATH" > ${BUILD_DIR}/.profile.d/groovy.sh
+	echo "export PATH=/app/.buildpack/groovy-2.3.6/bin:/app/.jdk/bin:$PATH" > ${BUILD_DIR}/.profile.d/groovy.sh
 	echo "done"
 }
 
